@@ -1,0 +1,309 @@
+#include "test_me.h"
+
+START_TEST(test_is_greater1) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 2;
+  // src2 = 2;
+  src1.bits[0] = 0b00000000000000000000000000000010;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000000000000000000000;
+  src2.bits[0] = 0b00000000000000000000000000000010;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater2) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 457;
+  // src2 = 2.00;
+  src1.bits[0] = 0b00000000000000000000000111001001;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000000000000000000000;
+  src2.bits[0] = 0b00000000000000000000000011001000;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000100000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 1;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater3) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 2;
+  // src2 = 54;
+  src1.bits[0] = 0b00000000000000000000000000000010;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000000000000000000000;
+  src2.bits[0] = 0b00000000000000000000000000110110;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater4) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 0.000000000000000000000000000;
+  // src2 = 0;
+  src1.bits[0] = 0b00000000000000000000000000000000;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b10000000000110110000000000000000;
+  src2.bits[0] = 0b00000000000000000000000000000000;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater5) {
+  decimal src1, src2;
+  int origin;
+  // src1 = -3;
+  // src2 = 3;
+  src1.bits[0] = 0b00000000000000000000000000000011;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b10000000000000000000000000000000;
+  src2.bits[0] = 0b00000000000000000000000000000011;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater6) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 87654323456.98765456789876530;
+  // src2 = -87654323456.98765456789876531;
+  src1.bits[0] = 0b10110010000010100010111100110010;
+  src1.bits[1] = 0b10011001010111000101110110000000;
+  src1.bits[2] = 0b00011100010100101001100001111111;
+  src1.bits[3] = 0b00000000000100010000000000000000;
+  src2.bits[0] = 0b10110010000010100010111100110011;
+  src2.bits[1] = 0b10011001010111000101110110000000;
+  src2.bits[2] = 0b00011100010100101001100001111111;
+  src2.bits[3] = 0b10000000000100010000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 1;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater7) {
+  decimal src1, src2;
+  int origin;
+  // src1 = -854764561465456456.9876545679;
+  // src2 = -87654323456.98765456789876530;
+  src1.bits[0] = 0b11000100000001000100000010001111;
+  src1.bits[1] = 0b01000000100100100110001100010101;
+  src1.bits[2] = 0b00011011100111100111001001011101;
+  src1.bits[3] = 0b10000000000010100000000000000000;
+  src2.bits[0] = 0b10110010000010100010111100110010;
+  src2.bits[1] = 0b10011001010111000101110110000000;
+  src2.bits[2] = 0b00011100010100101001100001111111;
+  src2.bits[3] = 0b10000000000100010000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater8) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 0.0;
+  // src2 = 0.69;
+  src1.bits[0] = 0b00000000000000000000000000000000;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000010000000000000000;
+  src2.bits[0] = 0b00000000000000000000000001000101;
+  src2.bits[1] = 0b00000000000000000000000000000000;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000100000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater9) {
+  decimal src1, src2;
+  int origin;
+  // src1 = -69.1234567;
+  // src2 = -69.12345670000000;
+  src1.bits[0] = 0b00101001001100110110011100000111;
+  src1.bits[1] = 0b00000000000000000000000000000000;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b10000000000001110000000000000000;
+  src2.bits[0] = 0b11100100001110011001110110000000;
+  src2.bits[1] = 0b00000000000110001000111010111101;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b10000000000011100000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater10) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 13436577854.000000000000;
+  // src2 = 13436577854;
+  src1.bits[0] = 0b00100110011110011110000000000000;
+  src1.bits[1] = 0b01100101111110011111000000101100;
+  src1.bits[2] = 0b00000000000000000000001011011000;
+  src1.bits[3] = 0b00000000000011000000000000000000;
+  src2.bits[0] = 0b00100000111000011110100000111110;
+  src2.bits[1] = 0b00000000000000000000000000000011;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b00000000000000000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater11) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 123523543453453453.0;
+  // src2 = 1844674407370955161.50;
+  src1.bits[0] = 0b01001001011001111111110110000010;
+  src1.bits[1] = 0b00010001001001000111000000010101;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000010000000000000000;
+  src2.bits[0] = 0b11111111111111111111111111110110;
+  src2.bits[1] = 0b11111111111111111111111111111111;
+  src2.bits[2] = 0b00000000000000000000000000001001;
+  src2.bits[3] = 0b00000000000000100000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater12) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 31231232456315.0;
+  // src2 = 44073709551615.00000000;
+  src1.bits[0] = 0b11100001001010100010000011001110;
+  src1.bits[1] = 0b00000000000000010001110000001011;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b00000000000000010000000000000000;
+  src2.bits[0] = 0b10011111010010100001111100000000;
+  src2.bits[1] = 0b11101100100011110001010001110111;
+  src2.bits[2] = 0b00000000000000000000000011101110;
+  src2.bits[3] = 0b00000000000010000000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater13) {
+  decimal src1, src2;
+  int origin;
+  // src1 = 78987543557678337.5935439503;
+  // src2 = 228162514264337.59354395030000;
+  src1.bits[0] = 0b00111011110001111000001010001111;
+  src1.bits[1] = 0b00101001100010100010010001100011;
+  src1.bits[2] = 0b00000010100011010101111010100001;
+  src1.bits[3] = 0b00000000000010100000000000000000;
+  src2.bits[0] = 0b10011111111111111111000111110000;
+  src2.bits[1] = 0b00111001110010101010100001111000;
+  src2.bits[2] = 0b01001001101110010010100100101100;
+  src2.bits[3] = 0b00000000000011100000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 1;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater14) {
+  decimal src1, src2;
+  int origin;
+  // src1 = -754567488438.97816770;
+  // src2 = -754554545454658.9781677;
+  src1.bits[0] = 0b01011010011001011000011011000010;
+  src1.bits[1] = 0b00010111001011000011100101001001;
+  src1.bits[2] = 0b00000000000000000000000000000100;
+  src1.bits[3] = 0b10000000000010000000000000000000;
+  src2.bits[0] = 0b10011100110111110000111010101101;
+  src2.bits[1] = 0b00001011011110101000110011100101;
+  src2.bits[2] = 0b00000000000000000000000110011001;
+  src2.bits[3] = 0b10000000000001110000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 1;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+START_TEST(test_is_greater15) {
+  decimal src1, src2;
+  int origin;
+  // src1 = -2.514475768684753643;
+  // src2 = -2.514264337593542;
+  src1.bits[0] = 0b10101100110010000011001011101011;
+  src1.bits[1] = 0b00100010111001010011011001100011;
+  src1.bits[2] = 0b00000000000000000000000000000000;
+  src1.bits[3] = 0b10000000000100100000000000000000;
+  src2.bits[0] = 0b11001000101101101011010011000110;
+  src2.bits[1] = 0b00000000000010001110111010110101;
+  src2.bits[2] = 0b00000000000000000000000000000000;
+  src2.bits[3] = 0b10000000000011110000000000000000;
+  int result = is_greater(src1, src2);
+  origin = 0;
+  ck_assert_int_eq(origin, result);
+}
+END_TEST
+
+Suite *test_is_greater(void) {
+  Suite *s = suite_create("\033[45m-=is_greater=-\033[0m");
+  TCase *tc = tcase_create("is_greater_tc");
+
+  tcase_add_test(tc, test_is_greater1);
+  tcase_add_test(tc, test_is_greater2);
+  tcase_add_test(tc, test_is_greater3);
+  tcase_add_test(tc, test_is_greater4);
+  tcase_add_test(tc, test_is_greater5);
+  tcase_add_test(tc, test_is_greater6);
+  tcase_add_test(tc, test_is_greater7);
+  tcase_add_test(tc, test_is_greater8);
+  tcase_add_test(tc, test_is_greater9);
+  tcase_add_test(tc, test_is_greater10);
+  tcase_add_test(tc, test_is_greater11);
+  tcase_add_test(tc, test_is_greater12);
+  tcase_add_test(tc, test_is_greater13);
+  tcase_add_test(tc, test_is_greater14);
+  tcase_add_test(tc, test_is_greater15);
+  suite_add_tcase(s, tc);
+  return s;
+}
