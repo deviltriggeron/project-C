@@ -19,24 +19,24 @@ String - Реализация стандартной библиотеки string
 Вычитание - int sub(decimal value_1, decimal value_2, decimal *result)   
 Умножение - int mul(decimal value_1, decimal value_2, decimal *result)    
 Деление - int div(decimal value_1, decimal value_2, decimal *result)  
-Меньше - int s21_is_less(s21_decimal, s21_decimal)  
-Меньше или равно - int s21_is_less_or_equal(s21_decimal, s21_decimal)  
-Больше - int s21_is_greater(s21_decimal, s21_decimal)  
-Больше или равно - int s21_is_greater_or_equal(s21_decimal, s21_decimal)  
-Равно - int s21_is_equal(s21_decimal, s21_decimal)  
-Не равно - int s21_is_not_equal(s21_decimal, s21_decimal)  
-Из int в decimal - int s21_from_int_to_decimal(int src, s21_decimal *dst)  
-Из float в decimal - int s21_from_float_to_decimal(float src, s21_decimal *dst)   
-Из decimal в int - int s21_from_decimal_to_int(s21_decimal src, int *dst)   
-Из decimal в float - int s21_from_decimal_to_float(s21_decimal src, float *dst)   
+Меньше - int is_less(decimal, decimal)  
+Меньше или равно - int is_less_or_equal(decimal, decimal)  
+Больше - int is_greater(decimal, decimal)  
+Больше или равно - int is_greater_or_equal(decimal, decimal)  
+Равно - int is_equal(decimal, decimal)  
+Не равно - int is_not_equal(decimal, decimal)  
+Из int в decimal - int from_int_to_decimal(int src, decimal *dst)  
+Из float в decimal - int from_float_to_decimal(float src, decimal *dst)   
+Из decimal в int - int from_decimal_to_int(decimal src, int *dst)   
+Из decimal в float - int from_decimal_to_float(decimal src, float *dst)   
 Округляет указанное Decimal число до ближайшего целого числа в сторону отрицательной бесконечности - 
-int s21_floor(s21_decimal value, s21_decimal *result)  
+int floor(decimal value, decimal *result)  
 Округляет Decimal до ближайшего целого числа - 
-int s21_round(s21_decimal value, s21_decimal *result)  
+int round(decimal value, decimal *result)  
 Возвращает целые цифры указанного Decimal числа; любые дробные цифры отбрасываются, включая конечные нули - 
-int s21_truncate(s21_decimal value, s21_decimal *result)  
+int truncate(decimal value, decimal *result)  
 Возвращает результат умножения указанного Decimal на -1 - 
-int s21_negate(s21_decimal value, s21_decimal *result)
+int negate(decimal value, decimal *result)
 
 ## Math
 
@@ -76,27 +76,27 @@ long double tan(double x)
 
 - Реализация работы с матрицой    
 Создание матриц (create_matrix)  
-int s21_create_matrix(int rows, int columns, matrix_t *result);   
+int create_matrix(int rows, int columns, matrix_t *result);   
 Очистка матриц (remove_matrix)   
-void s21_remove_matrix(matrix_t *A);
+void remove_matrix(matrix_t *A);
 Сравнение матриц (eq_matrix)  
-int s21_eq_matrix(matrix_t *A, matrix_t *B);   
+int eq_matrix(matrix_t *A, matrix_t *B);   
 Сложение (sum_matrix)    
-int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
+int sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
 Вычитание матриц (sub_matrix)
-int s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
+int sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result);
 Умножение матрицы на число (mult_number)   
-int s21_mult_number(matrix_t *A, double number, matrix_t *result);    
+int mult_number(matrix_t *A, double number, matrix_t *result);    
 Умножение двух матриц (mult_matrix)   
-int s21_mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result);    
+int mult_matrix(matrix_t *A, matrix_t *B, matrix_t *result);    
 Транспонирование матрицы (transpose)     
-int s21_transpose(matrix_t *A, matrix_t *result);   
+int transpose(matrix_t *A, matrix_t *result);   
 Минор матрицы и матрица алгебраических дополнений (calc_complements)    
-int s21_calc_complements(matrix_t *A, matrix_t *result);
+int calc_complements(matrix_t *A, matrix_t *result);
 Определитель матрицы (determinant)   
-int s21_determinant(matrix_t *A, double *result);    
+int determinant(matrix_t *A, double *result);    
 Обратная матрица (inverse_matrix)  
-int s21_inverse_matrix(matrix_t *A, matrix_t *result);
+int inverse_matrix(matrix_t *A, matrix_t *result);
 
 ## SimpleBash
 
